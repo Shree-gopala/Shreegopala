@@ -193,7 +193,9 @@ export default function ContactPage() {
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                           className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all"
                           placeholder="Your name"
+                          
                         />
+                        {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1.5">Email Address *</label>
@@ -205,6 +207,7 @@ export default function ContactPage() {
                           className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all"
                           placeholder="you@company.com"
                         />
+                        {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
                       </div>
                     </div>
                     <div className="grid sm:grid-cols-2 gap-5">
@@ -244,8 +247,10 @@ export default function ContactPage() {
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                         className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all resize-none"
                         placeholder="Tell us about your requirements..."
+
                       />
                     </div>
+                    {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
                     <button
                       type="submit"
                       disabled={isSubmitting}
