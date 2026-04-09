@@ -16,6 +16,28 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  // Validation Logic
+  const validate = () => {
+    let newErrors: Record<string, string> = {};
+    
+    if (!formData.name.trim()) newErrors.name = "Name is required";
+    
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) newErrors.email = "Invalid email address";
+    
+    if (!formData.subject) newErrors.subject = "Please select a subject";
+    
+    if (formData.message.length < 10) newErrors.message = "Message must be at least 10 characters";
+    
+    const phoneRegex = /^[0-9]{10,12}$/;
+    if (formData.phone && !phoneRegex.test(formData.phone.replace(/\D/g, ""))) {
+      newErrors.phone = "Invalid phone number";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -23,6 +45,24 @@ export default function ContactPage() {
     setIsSubmitting(false);
     setIsSubmitted(true);
     setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+    try {
+      const response = await fetch("https://shreegopalagroup.com/mail.php", { // mail.php ka sahi path dein
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -295,6 +335,13 @@ export default function ContactPage() {
       </main>
 
       <Footer />
+    </div>
+    <div>
+      <input 
+        // ... existing props
+        className={`w-full ... ${errors.name ? 'border-red-500' : 'border-gray-200'}`}
+      />
+      {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
     </div>
   );
 }
