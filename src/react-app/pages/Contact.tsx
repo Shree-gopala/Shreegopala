@@ -341,12 +341,6 @@ export default function ContactPage() {
 
       <Footer />
     </div>
-    <div>
-      <input 
-        // ... existing props
-        className={`w-full ... ${errors.name ? 'border-red-500' : 'border-gray-200'}`}
-      />
-      {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
-    </div>
+   
   );
 }
