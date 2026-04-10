@@ -297,7 +297,7 @@ export default function HomePage() {
         </section>
 
       {/* Why Industries Trust Us Section */}
-      <section className="sticky top-0 z-10 h-screen flex items-center overflow-hidden">
+      <section className="relative z-20 bg-white py-20 ">
           {/* Background Image */}
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
