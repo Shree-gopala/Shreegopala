@@ -39,11 +39,14 @@ export default function ContactPage() {
     return Object.keys(newErrors).length === 0;
   };
 
- const handleSubmit = async (e: FormEvent) => {
+const handleSubmit = async (e: FormEvent) => {
   e.preventDefault();
   
-  // 1. Pehle validation check karein
-  if (!validate()) return; 
+  // Pehle check karein ki saare fields sahi bhare hain ya nahi
+  if (!validate()) {
+    console.log("Validation failed", errors);
+    return; 
+  }
 
   setIsSubmitting(true);
 
@@ -55,16 +58,15 @@ export default function ContactPage() {
     });
 
     if (response.ok) {
-      // 2. Success state set karein
-      setIsSubmitted(true);
+      // YAHAN SE SUCCESS MESSAGE TRIGGER HOGA
+      setIsSubmitted(true); 
       setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
-      setErrors({}); // Purane errors saaf karein
+      setErrors({});
     } else {
-      const errorData = await response.json();
-      alert("Worker Error: " + (errorData.error || "Unknown error"));
+      alert("Mail bhejane mein problem aayi. Worker check karein.");
     }
   } catch (err) {
-    alert("Connection error! Please check your internet.");
+    alert("Network error! Connection check karein.");
   } finally {
     setIsSubmitting(false);
   }
