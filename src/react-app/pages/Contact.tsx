@@ -39,31 +39,26 @@ export default function ContactPage() {
   };
 
   const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
-    try {
-      const response = await fetch("https://shreegopalagroup.com/mail.php", { // mail.php ka sahi path dein
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+  e.preventDefault();
+  setIsSubmitting(true);
 
-      if (response.ok) {
-        setIsSubmitted(true);
-        setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
-      } else {
-        alert("Something went wrong. Please try again.");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    } finally {
-      setIsSubmitting(false);
+  try {
+    const response = await fetch("https://mail-handler.ghanshyam-kumar-sgsc.workers.dev/", {
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: { "Content-Type": "application/json" }
+    });
+
+    if (response.ok) {
+      setIsSubmitted(true);
+      setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
     }
-  };
+  } catch (err) {
+    alert("Connection error!");
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   const contactInfo = [
     {
