@@ -201,7 +201,7 @@ const handleSubmit = async (e: FormEvent) => {
                           placeholder="Your name"
                           
                         />
-                        {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
+                        {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1.5">Email Address *</label>
@@ -213,7 +213,7 @@ const handleSubmit = async (e: FormEvent) => {
                           className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all"
                           placeholder="you@company.com"
                         />
-                        {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
+                       {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
                       </div>
                     </div>
                     <div className="grid sm:grid-cols-2 gap-5">
@@ -255,8 +255,9 @@ const handleSubmit = async (e: FormEvent) => {
                         placeholder="Tell us about your requirements..."
 
                       />
+                     {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
                     </div>
-                    {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
+                    
                     <button
                       type="submit"
                       disabled={isSubmitting}
