@@ -34,7 +34,7 @@ export default function Header() {
   return (
     <>
       {/* Fixed Language Switcher - Top Right */}
-      <div className="fixed top-2 right-4 z-[60] flex gap-2 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full shadow-md border border-gray-100">
+      <div className="fixed top-32 right-4 z-[60] flex gap-2 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full shadow-md border border-gray-100">
         <button 
           onClick={() => window.changeLanguageByGoogle('en')} 
           className="text-[10px] md:text-xs font-bold text-gray-700 hover:text-[#FF9933] transition-colors"
