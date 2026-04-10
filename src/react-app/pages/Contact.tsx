@@ -39,8 +39,12 @@ export default function ContactPage() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e: FormEvent) => {
+ const handleSubmit = async (e: FormEvent) => {
   e.preventDefault();
+  
+  // 1. Pehle validation check karein
+  if (!validate()) return; 
+
   setIsSubmitting(true);
 
   try {
@@ -51,16 +55,20 @@ export default function ContactPage() {
     });
 
     if (response.ok) {
+      // 2. Success state set karein
       setIsSubmitted(true);
       setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+      setErrors({}); // Purane errors saaf karein
+    } else {
+      const errorData = await response.json();
+      alert("Worker Error: " + (errorData.error || "Unknown error"));
     }
   } catch (err) {
-    alert("Connection error!");
+    alert("Connection error! Please check your internet.");
   } finally {
     setIsSubmitting(false);
   }
 };
-
   const contactInfo = [
     {
       icon: <Phone className="w-6 h-6" />,
