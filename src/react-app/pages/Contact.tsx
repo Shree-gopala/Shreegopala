@@ -51,11 +51,11 @@ const handleSubmit = async (e: FormEvent) => {
   setIsSubmitting(true);
 
   try {
-    const response = await fetch("https://api.shreegopalagroup.com", {
-      method: "POST",
-      body: JSON.stringify(formData),
-      headers: { "Content-Type": "application/json" }
-    });
+   const response = await fetch("https://api.shreegopalagroup.com", { 
+  method: "POST",
+  body: JSON.stringify(formData),
+  headers: { "Content-Type": "application/json" }
+});
 
     if (response.ok) {
       // YAHAN SE SUCCESS MESSAGE TRIGGER HOGA
