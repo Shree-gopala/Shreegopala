@@ -34,7 +34,7 @@ export default function AboutPage() {
           About SGSC</span><h2 class="font-serif text-2xl md:text-3xl lg:text-4xl text-gray-900 font-bold mt-2 mb-6 leading-tight">We Are Here To Deliver Quality Chemicals For Your Industry</h2>
           <p class="text-gray-900 leading-relaxed mb-6">Shree Gopala Sanwaria Chemicals, an esteemed enterprise that has established itself as a pioneer in the production and supply of non ferrous metals and galvanizing chemicals in India. Since our inception in 1998, our mission has been to contribute to the nation's infrastructural growth by providing high-quality products that impeccably align with the exacting demands of our discerning customers.</p>
           
-          <p class="text-gray-900 leading-relaxed mb-8">Founded by <span class="font-semibold">At Shree Gopala Sanwaria Chemicals, we take great pride in our unwavering commitment to excellence, which has propelled us to become one of the most trusted names in the industry. We have tirelessly pursued perfection and worked hard to earn our reputation as a reliable and responsible supplier of non ferrous metals and galvanizing chemicals.</p></div></div></section>
+          <p class="text-gray-900 leading-relaxed mb-8">At Shree Gopala Sanwaria Chemicals, we take great pride in our unwavering commitment to excellence, which has propelled us to become one of the most trusted names in the industry. We have tirelessly pursued perfection and worked hard to earn our reputation as a reliable and responsible supplier of non ferrous metals and galvanizing chemicals.</p></div></div></section>
 
         {/* Mission & Vision Section */}
         <section className="py-12 md:py-16 bg-white">
